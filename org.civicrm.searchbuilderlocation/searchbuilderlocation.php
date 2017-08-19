@@ -27,6 +27,16 @@ function searchbuilderlocation_civicrm_xmlMenu(&$files) {
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_install
  */
 function searchbuilderlocation_civicrm_install() {
+
+//Copy overridden Core CiviCRM files
+$srcfile='CRM/Core/SelectValues.php';
+$dstfile='../../../../../all/modules/civicrm/CRM/Core/SelectValues.php';
+copy($srcfile, $dstfile);
+
+$srcfile='CRM/Core/BAO/Mapping.php';
+$dstfile='../../../../../all/modules/civicrm/CRM/Core/BAO/Mapping.php';
+copy($srcfile, $dstfile);
+
   _searchbuilderlocation_civix_civicrm_install();
 }
 
