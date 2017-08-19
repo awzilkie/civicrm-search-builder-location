@@ -860,6 +860,12 @@ class CRM_Core_BAO_Mapping extends CRM_Core_DAO_Mapping {
 
           $form->add('select', "operator[$x][$i]", '', $operatorArray);
           $form->add('text', "value[$x][$i]", '');
+          
+          $form->add('select', "prox_distance_unit[$x][$i]", '', array(
+            'miles' => ts('Miles'),
+            'kilos' => ts('Kilometers'),
+        ));
+         $form->add('text', "prox_distance_value[$x][$i]", '');
         }
       }
       //end of columnCnt for

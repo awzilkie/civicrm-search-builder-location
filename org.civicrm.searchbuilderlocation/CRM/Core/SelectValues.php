@@ -912,6 +912,7 @@ class CRM_Core_SelectValues {
       'IS NOT EMPTY' => ts('Not Empty'),
       'IS NULL' => ts('Is Null'),
       'IS NOT NULL' => ts('Not Null'),
+      'WITHIN' => 'Within',
     );
     if ($fieldType) {
       switch ($fieldType) {

@@ -40,6 +40,12 @@
               <span class="crm-search-value" id="crm_search_value_{$x}_{$i}">
                 {$form.value[$x][$i].html|crmAddClass:'required'}
               </span>
+              {$form.prox_distance_unit[$x][$i].html|crmAddClass:'required'}
+              <span class="crm-search-of" id="crm_search_of_{$x}_{$i}" style="padding: 10px">Of
+              </span>
+              <span class="crm-search-of" id="crm_prox_value_{$x}_{$i}">
+              {$form.prox_distance_value[$x][$i].html|crmAddClass:'required'}
+              </span>
               {if $i gt 0 or $x gt 1}
                 &nbsp;<a href="#" class="crm-reset-builder-row crm-hover-button" title="{ts}Remove this row{/ts}"><i class="crm-i fa-times"></i></a>
               {/if}
