@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<extension key="org.civicrm.searchbuilderlocation" type="module">
+  <file>searchbuilderlocation</file>
+  <name>Location Search Extension for Search Builder</name>
+  <description>Extend CiviCRM search builder to support location based searches</description>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>Adam Zilkie</author>
+    <email>azilkie@gmail.com</email>
+  </maintainer>
+  <urls>
+    <url desc="Main Extension Page">http://FIXME</url>
+    <url desc="Documentation">https://docs.civicrm.org/volunteer/en/latest</url>
+  </urls>
+  <releaseDate>2017-08-15</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>4.7</ver>
+  </compatibility>
+  <comments>This is a new, undeveloped module</comments>
+  <civix>
+    <namespace>CRM/Searchbuilderlocation</namespace>
+  </civix>
+</extension>
