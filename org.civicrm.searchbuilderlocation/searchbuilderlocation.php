@@ -29,12 +29,20 @@ function searchbuilderlocation_civicrm_xmlMenu(&$files) {
 function searchbuilderlocation_civicrm_install() {
 
 //Copy overridden Core CiviCRM files
-$srcfile='CRM/Core/SelectValues.php';
-$dstfile='../../../../../all/modules/civicrm/CRM/Core/SelectValues.php';
+$srcfile='/var/www/html/drupal/sites/default/files/civicrm/ext/org.civicrm.searchbuilderlocation/CRM/Core/SelectValues.php';
+$dstfile='/var/www/html/drupal/sites/all/modules/civicrm/CRM/Core/SelectValues.php';
 copy($srcfile, $dstfile);
 
-$srcfile='CRM/Core/BAO/Mapping.php';
-$dstfile='../../../../../all/modules/civicrm/CRM/Core/BAO/Mapping.php';
+$srcfile='/var/www/html/drupal/sites/default/files/civicrm/ext/org.civicrm.searchbuilderlocation/CRM/Core/BAO/Mapping.php';
+$dstfile='/var/www/html/drupal/sites/all/modules/civicrm/CRM/Core/BAO/Mapping.php';
+copy($srcfile, $dstfile);
+
+$srcfile='/var/www/html/drupal/sites/default/files/civicrm/ext/org.civicrm.searchbuilderlocation/HTML/QuickForm.php';
+$dstfile='/var/www/html/drupal/sites/all/modules/civicrm/packages/HTML/QuickForm.php';
+copy($srcfile, $dstfile);
+
+$srcfile='/var/www/html/drupal/sites/default/files/civicrm/ext/org.civicrm.searchbuilderlocation/HTML/QuickForm/customjsselect.php';
+$dstfile='/var/www/html/drupal/sites/all/modules/civicrm/packages/HTML/QuickForm/customjsselect.php';
 copy($srcfile, $dstfile);
 
   _searchbuilderlocation_civix_civicrm_install();

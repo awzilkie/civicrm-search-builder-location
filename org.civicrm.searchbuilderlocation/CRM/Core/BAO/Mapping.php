@@ -711,7 +711,7 @@ class CRM_Core_BAO_Mapping extends CRM_Core_DAO_Mapping {
     for ($x = 1; $x < $blockCount; $x++) {
 
       for ($i = 0; $i < $columnCount[$x]; $i++) {
-
+      
         $sel = &$form->addElement('hierselect', "mapper[$x][$i]", ts('Mapper for Field %1', array(1 => $i)), NULL);
         $jsSet = FALSE;
 
@@ -858,7 +858,26 @@ class CRM_Core_BAO_Mapping extends CRM_Core_DAO_Mapping {
           //CRM -2292, restricted array set
           $operatorArray = array('' => ts('-operator-')) + CRM_Core_SelectValues::getSearchBuilderOperators();
 
-          $form->add('select', "operator[$x][$i]", '', $operatorArray);
+          $cusSel = $form->add('customjsselect', "operator[$x][$i]", '', $operatorArray);
+          $cusSel->updateAttributes(array('onChange' => 'OnValueChange(this.value,'.$x.','.$i.');'));
+          $customjs = "
+          function OnValueChange(val,x,i){
+            if (val==\"WITHIN\")
+            {
+                document.getElementById(\"prox_distance_unit_\"+x+\"_\"+i).style.display = \"inline\";
+                document.getElementById(\"prox_distance_value_\"+x+\"_\"+i).style.display = \"inline\";
+                document.getElementById(\"crm_search_of_\"+x+\"_\"+i).style.display = \"inline\";
+            }
+            else
+            {
+                document.getElementById(\"prox_distance_unit_\"+x+\"_\"+i).style.display = \"none\";
+                document.getElementById(\"prox_distance_value_\"+x+\"_\"+i).style.display = \"none\";
+                document.getElementById(\"crm_search_of_\"+x+\"_\"+i).style.display = \"none\";
+            }
+          }
+          ";
+          $cusSel->addJS($customjs);
+          
           $form->add('text', "value[$x][$i]", '');
           
           $form->add('select', "prox_distance_unit[$x][$i]", '', array(
@@ -919,7 +938,13 @@ class CRM_Core_BAO_Mapping extends CRM_Core_DAO_Mapping {
       $js .= "
                 for (var i=0;i<noneArray.length;i++) {
                     if ( {$formName}['mapper['+noneArray[i][0]+']['+noneArray[i][1]+']['+noneArray[i][2]+']'] ) {
-  {$formName}['mapper['+noneArray[i][0]+']['+noneArray[i][1]+']['+noneArray[i][2]+']'].style.display = 'none';
+                        {$formName}['mapper['+noneArray[i][0]+']['+noneArray[i][1]+']['+noneArray[i][2]+']'].style.display = 'none';
+                    }
+                    if ( {$formName}['prox_distance_unit['+noneArray[i][0]+']['+noneArray[i][1]+']'] ) {
+                        {$formName}['prox_distance_unit['+noneArray[i][0]+']['+noneArray[i][1]+']'].style.display = 'none';
+                    }
+                    if ( {$formName}['prox_distance_value['+noneArray[i][0]+']['+noneArray[i][1]+']'] ) {
+                        {$formName}['prox_distance_value['+noneArray[i][0]+']['+noneArray[i][1]+']'].style.display = 'none';
                     }
                 }
 ";

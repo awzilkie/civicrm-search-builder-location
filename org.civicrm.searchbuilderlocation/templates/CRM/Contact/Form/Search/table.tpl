@@ -41,8 +41,8 @@
                 {$form.value[$x][$i].html|crmAddClass:'required'}
               </span>
               {$form.prox_distance_unit[$x][$i].html|crmAddClass:'required'}
-              <span class="crm-search-of" id="crm_search_of_{$x}_{$i}" style="padding: 10px">Of
-              </span>
+              <div class="crm-search-of" id="crm_search_of_{$x}_{$i}" style="padding: 10px; display: none">Of
+              </div>
               <span class="crm-search-of" id="crm_prox_value_{$x}_{$i}">
               {$form.prox_distance_value[$x][$i].html|crmAddClass:'required'}
               </span>
